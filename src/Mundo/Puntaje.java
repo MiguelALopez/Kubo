@@ -1,10 +1,15 @@
 package Mundo;
 
+import javax.swing.*;
+import java.awt.*;
+
+// ContadorPelotas.java
+
 public class Puntaje {
     private int numPelotas;
     protected Label labelNumPelotas;
     BorderLayout esquema;
-    public ContadorPelotas(int numPelotas)
+    public Puntaje(int numPelotas)
     {
      this.numPelotas = numPelotas;
      esquema = new BorderLayout(5, 5);

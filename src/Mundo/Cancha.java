@@ -1,5 +1,10 @@
 package Mundo;
 
+import javax.swing.*;
+import java.awt.*;
+
+// EspacioPelotas.java
+
 public class Cancha extends JPanel{
     
     protected Balon pelotas[];
@@ -11,7 +16,7 @@ public class Cancha extends JPanel{
     Graphics graphicsBuffer;
 
     // Defino el Constructor asignando los tamaños iniciales del applet y inicializando el arreglo de pelotas en 20
-    public EspacioBalons(int numBalons)
+    public Cancha(int numBalons)
     {
         pelotas = new Balon[numBalons];
         numBalons = 1;

@@ -8,7 +8,7 @@ public class Balon {
     private int desplazamientoX;
     private int desplazamientoY;
 
-    public Pelota(Dimension posicionAct, int radio, Color color, int desplazamientoX, int desplazamientoY) {
+    public Balon(Dimension posicionAct, int radio, Color color, int desplazamientoX, int desplazamientoY) {
         this.posicionAct = posicionAct;
         this.radio = radio;
         this.color = color;
