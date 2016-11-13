@@ -1,11 +1,10 @@
-/***********************************************
+package old; /***********************************************
  Autor: Miguel Angel Lopez Fernandez
  Código: 1326691
  Plan: Ingeniería de sistemas - 3743
  Nombre del archivo: Pelota.java
  Fecha: 03-nov-2014
  *************************************************/
-package Punto3;
 
 import java.awt.*;
 

@@ -1,12 +1,10 @@
-/***********************************************
+package old; /***********************************************
  Autor: Miguel Angel Lopez Fernandez
  Código: 1326691
  Plan: Ingeniería de sistemas - 3743
  Nombre del archivo: MovimientoPelota.java
  Fecha: 06-nov-2014
  *************************************************/
-
-package Punto3;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
