@@ -7,8 +7,8 @@ import java.awt.*;
 
 public class Cancha extends JPanel{
     
-    protected Balon pelotas[];
-    protected int numBalons;
+    public Balon pelotas[];
+    public int numBalons;
 
 
     // Creo un buffer para eliminar el parpadeo

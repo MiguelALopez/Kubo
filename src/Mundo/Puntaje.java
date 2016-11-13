@@ -3,30 +3,30 @@ package Mundo;
 import javax.swing.*;
 import java.awt.*;
 
-// ContadorPelotas.java
+// ContadorBalons.java
 
-public class Puntaje {
-    private int numPelotas;
-    protected Label labelNumPelotas;
+public class Puntaje extends JPanel{
+    private int numBalons;
+    protected Label labelNumBalons;
     BorderLayout esquema;
-    public Puntaje(int numPelotas)
+    public Puntaje(int numBalons)
     {
-     this.numPelotas = numPelotas;
+     this.numBalons = numBalons;
      esquema = new BorderLayout(5, 5);
      setLayout(esquema);
-     labelNumPelotas = new Label("El numero de pelotas es: " + numPelotas );
-     add(labelNumPelotas);
+     labelNumBalons = new Label("El numero de pelotas es: " + numBalons );
+     add(labelNumBalons);
     }
 
-    public int getNumPelotas() {
-      return numPelotas;
+    public int getNumBalons() {
+      return numBalons;
      }
 
-    public void setNumPelotas(int numPelotas) {
-      this.numPelotas = numPelotas;
+    public void setNumBalons(int numBalons) {
+      this.numBalons = numBalons;
      }
 
-    public void refrescarPelotas(int numPelotas){
-     labelNumPelotas.setText("El numero de pelotas es: " + numPelotas);
+    public void refrescarBalons(int numBalons){
+     labelNumBalons.setText("El numero de pelotas es: " + numBalons);
     }
 }
