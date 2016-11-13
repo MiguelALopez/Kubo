@@ -16,7 +16,7 @@ public class MovimientoPelota implements Runnable{
 
  	private EspacioPelotas espacioPelotas;
  	private FisicaPelota fisicaPelota;
-    private AppletPelota appletPelota;
+    private AppletPelota appletPelota; // Main class
     private ContadorPelotas contadorPelotas;
 
      public MovimientoPelota(final EspacioPelotas espacioPelotas, FisicaPelota fisicaPelota, AppletPelota appletPelota, final ContadorPelotas contadorPelotas) {
@@ -59,10 +59,10 @@ public class MovimientoPelota implements Runnable{
              {
                  if (espacioPelotas.pelotas[i] != null)
                  {
-                     Dimension dimensionApplet = new Dimension();
-                     dimensionApplet.setSize(appletPelota.getWidth(), appletPelota.getHeight() - 21);
+                     Dimension dimensionFrame = new Dimension();
+                     dimensionFrame.setSize(appletPelota.getWidth(), appletPelota.getHeight() - 21);
                      espacioPelotas.pelotas[i].setPosicionAct(
-                             fisicaPelota.movimiento(espacioPelotas.pelotas[i],dimensionApplet, espacioPelotas.pelotas));
+                             fisicaPelota.movimiento(espacioPelotas.pelotas[i],dimensionFrame, espacioPelotas.pelotas));
                  }
 
              }
