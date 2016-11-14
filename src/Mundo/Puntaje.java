@@ -14,7 +14,7 @@ public class Puntaje extends JPanel{
      this.numBalons = numBalons;
      esquema = new BorderLayout(5, 5);
      setLayout(esquema);
-     labelNumBalons = new Label("El numero de pelotas es: " + numBalons );
+     labelNumBalons = new Label("Total rebotes: " + numBalons );
      add(labelNumBalons);
     }
 
@@ -27,6 +27,6 @@ public class Puntaje extends JPanel{
      }
 
     public void refrescarBalons(int numBalons){
-     labelNumBalons.setText("El numero de pelotas es: " + numBalons);
+     labelNumBalons.setText("Total rebotes: " + numBalons);
     }
 }

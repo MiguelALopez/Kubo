@@ -12,8 +12,13 @@ public class Balon {
         this.posicionAct = posicionAct;
         this.radio = radio;
         this.color = color;
-        this.desplazamientoX = desplazamientoX;
-        this.desplazamientoY = desplazamientoY;
+        double rand = Math.random()*2;
+        
+        // Configurar movimiento de manera aleatoria
+        if (rand < 1)
+            this.desplazamientoX = desplazamientoX;
+        else
+            this.desplazamientoY = desplazamientoY;
     }
 
     public Dimension getPosicionAct() {

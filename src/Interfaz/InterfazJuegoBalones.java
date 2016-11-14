@@ -22,6 +22,7 @@ public class InterfazJuegoBalones extends JFrame{
         new HiloBalon(espacioPelotas, fisicaPelota, this,  contadorPelotas);
         add(espacioPelotas, BorderLayout.CENTER);
         add(contadorPelotas, BorderLayout.SOUTH);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void start(){}
     public void stop(){}

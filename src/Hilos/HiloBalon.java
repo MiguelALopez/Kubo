@@ -66,9 +66,22 @@ public class HiloBalon implements Runnable{
     /*Método encargado de crear pelotas y llamar al método crear pelotas para almacenarlas*/
     public void crearBalon()
     {
-        Dimension posicionInicial = new Dimension(appletBalon.getWidth() / 2, appletBalon.getHeight() / 2);
+        // Crear balones en posiciones aleatorias
+        double t_posx = Math.random() * (appletBalon.getWidth() - 30);
+        double t_posy = Math.random() * (appletBalon.getHeight() - 30);
+        int posx = (int) t_posx;
+        int posy = (int) t_posy;
+        if (posx < 0)
+            posx= 0 ;
+        if (posy < 0)
+            posy = 0;
+        double t_radio = 0;
+        while (t_radio < 30)
+            t_radio = Math.random() * 70;
+        int radio = (int) t_radio;
+        Dimension posicionInicial = new Dimension(posx, posy);
         Balon pelota = new Balon(posicionInicial,
-                30, fisicaBalon.colorAleatorio(),
+                radio, fisicaBalon.colorAleatorio(),
                 fisicaBalon.desplazamientoAleatorio(),
                 fisicaBalon.desplazamientoAleatorio());
 

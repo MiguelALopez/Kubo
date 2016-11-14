@@ -9,6 +9,7 @@ import java.util.*;
 public class PanelCancha {
     Color colores[] = {Color.black, Color.blue, Color.yellow, Color.red, Color.green, Color.orange, Color.cyan,
     Color.gray, Color.magenta, Color.pink};
+    public int rebotes;
 
     public PanelCancha() {
     }
@@ -20,15 +21,18 @@ public class PanelCancha {
 
     public Dimension movimiento(Balon pelota, Dimension dimFrame, Balon[] pelotas)
     {
+        // Contar rebote
         if ((pelota.getPosicionAct().getWidth() > (dimFrame.getWidth() - pelota.getRadio())) ||
                 (pelota.getPosicionAct().getWidth() <= 0)){
             pelota.setDesplazamientoX(-1 * pelota.getDesplazamientoX());
             extremo();
+            this.rebotes++;
         }
-        if ((pelota.getPosicionAct().getHeight() > (dimFrame.getHeight() - pelota.getRadio())) ||
+        if ((pelota.getPosicionAct().getHeight() > (dimFrame.getHeight() - pelota.getRadio() - 40)) ||
                 (pelota.getPosicionAct().getHeight() <= 0)){
             pelota.setDesplazamientoY(-1 * pelota.getDesplazamientoY());
             extremo();
+            // this.rebotes++;
         }
         if (chocanBalons(pelota, pelotas))
         {
@@ -40,7 +44,7 @@ public class PanelCancha {
         Dimension dimension = new Dimension();
         dimension.setSize(pelota.getPosicionAct().getWidth() + pelota.getDesplazamientoX(),
                 pelota.getPosicionAct().getHeight() + pelota.getDesplazamientoY());
-
+        // System.out.println("Rebotes: "+rebotes);
         return dimension;
     }
 
@@ -63,10 +67,12 @@ public class PanelCancha {
                 if (pelota.getRadio() > calcularDistancia(pelota, pelotas[i]))
                 {
                     chocan = true;
+                    /*
                     if (pelota.getColor() == pelotas[i].getColor())
                     {
 
                     }
+                    */
                 }
             }
         }
