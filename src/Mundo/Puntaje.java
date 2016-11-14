@@ -48,6 +48,6 @@ public class Puntaje extends JPanel{
      }
 
     public void refrescarBalons(int numBalons){
-     labelNumBalons.setText("Total rebotes: " + contarRebotes());
+     labelNumBalons.setText("Total rebotes: " + numBalons);
     }
 }

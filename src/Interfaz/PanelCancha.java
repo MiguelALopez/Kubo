@@ -9,12 +9,16 @@ import java.util.*;
 public class PanelCancha {
     Color colores[] = {Color.black, Color.blue, Color.yellow, Color.red, Color.green, Color.orange, Color.cyan,
     Color.gray, Color.magenta, Color.pink};
-    // public int rebotes;
+     public int rebotes=0;
+     Puntaje puntaje;
 
     public PanelCancha() {
     }
 
-    
+    public void setPuntaje(final Puntaje puntaje)
+    {
+        this.puntaje = puntaje;
+    }
 
     public Dimension movimiento(Balon pelota, Dimension dimFrame, Balon[] pelotas)
     {
@@ -23,12 +27,16 @@ public class PanelCancha {
                 (pelota.getPosicionAct().getWidth() <= 0)){
             pelota.setDesplazamientoX(-1 * pelota.getDesplazamientoX());
             pelota.setRebotes(pelota.getRebotes()+1);
+            puntaje.refrescarBalons(rebotes++);
+//            System.out.println("Rebote: " + rebotes++);
             //this.rebotes++;
         }
         if ((pelota.getPosicionAct().getHeight() > (dimFrame.getHeight() - pelota.getRadio() - 40)) ||
                 (pelota.getPosicionAct().getHeight() <= 0)){
             pelota.setDesplazamientoY(-1 * pelota.getDesplazamientoY());
             pelota.setRebotes(pelota.getRebotes()+1);
+            puntaje.refrescarBalons(rebotes++);
+//            System.out.println("Rebote: " + rebotes++);
             // this.rebotes++;
         }
         if (chocanBalons(pelota, pelotas))

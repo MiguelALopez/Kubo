@@ -19,6 +19,7 @@ public class InterfazJuegoBalones extends JFrame{
         panelCancha = new PanelCancha();
         cancha = new Cancha(cantidadBalones);
         Puntaje contadorRebotes = new Puntaje(cantidadBalones, cancha.getPelotas());
+        panelCancha.setPuntaje(contadorRebotes);
         new HiloBalon(cancha, panelCancha, this,  contadorRebotes);
         add(cancha, BorderLayout.CENTER);
         add(contadorRebotes, BorderLayout.SOUTH);

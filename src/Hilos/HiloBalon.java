@@ -62,6 +62,7 @@ public class HiloBalon implements Runnable{
             {
                 if (cancha.pelotas[i] != null)
                 {
+                    // contadorRebotes.contarRebotes();
                     Dimension dimensionFrame = new Dimension();
                     dimensionFrame.setSize(appletBalon.getWidth(), appletBalon.getHeight() - 21);
                     cancha.pelotas[i].setPosicionAct(
@@ -75,8 +76,8 @@ public class HiloBalon implements Runnable{
     public void crearBalon()
     {
         // Crear balones en posiciones aleatorias sin salirse de la pantalla
-        double t_posx = Math.random() * (appletBalon.getWidth() - 30);
-        double t_posy = Math.random() * (appletBalon.getHeight() - 30);
+        double t_posx = Math.random() * (appletBalon.getWidth() - 100);
+        double t_posy = Math.random() * (appletBalon.getHeight() - 100);
         int posx = (int) t_posx;
         int posy = (int) t_posy;
         if (posx < 30)
