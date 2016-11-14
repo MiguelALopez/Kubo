@@ -5,7 +5,7 @@
  Nombre del archivo: FisicaPelota.java
  Fecha: 03-nov-2014
  *************************************************/
-package Punto3;
+package old;
 
 import java.awt.*;
 import java.util.Random;
@@ -70,8 +70,8 @@ public class FisicaPelota {
                     chocan = true;
                     if (pelota.getColor() == pelotas[i].getColor())
                     {
-                        audioColor.stop();
-                        audioColor.play();
+//                        audioColor.stop();
+//                        audioColor.play();
                     }
                 }
             }

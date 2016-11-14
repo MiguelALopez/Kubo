@@ -24,7 +24,7 @@ public class AppletPelota extends JApplet{
 
         sonidoRebote = getAudioClip(getDocumentBase(), "old/boing.aif");
         sonidoColor = getAudioClip(getCodeBase(), "old/hi.au");
-        fisicaPelota = new FisicaPelota(sonidoRebote, sonidoColor);
+//        fisicaPelota = new FisicaPelota(sonidoRebote, sonidoColor);
         espacioPelotas = new EspacioPelotas(20);
         ContadorPelotas contadorPelotas = new ContadorPelotas(1);
         new MovimientoPelota(espacioPelotas, fisicaPelota, this,  contadorPelotas);

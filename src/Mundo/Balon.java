@@ -22,6 +22,17 @@ public class Balon {
             this.desplazamientoY = desplazamientoY;
     }
 
+    public void checkAcierto(int posX, int posY){
+        float deltaX = (int) posicionAct.getWidth() - (float)posX;
+        float deltaY = (int) posicionAct.getHeight() - (float)posY;
+        float distance = deltaX * deltaX + deltaY * deltaY;
+        if(distance < radio * radio){
+            desplazamientoX = 0;
+            desplazamientoY = 0;
+            System.out.println("tiki");
+        }
+    }
+
     public Dimension getPosicionAct() {
         return posicionAct;
     }

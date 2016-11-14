@@ -3,8 +3,10 @@ package Hilos;
 import Interfaz.*;
 import Mundo.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 // MovimientoBalon.java
 
@@ -31,6 +33,18 @@ public class HiloBalon implements Runnable{
         {
             crearBalon();
         }
+        cancha.addMouseListener(
+                new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        super.mouseClicked(e);
+                        for (int i = 0; i < cancha.pelotas.length; i++) {
+                            cancha.pelotas[i].checkAcierto(e.getX(), e.getY());
+                        }
+//                        System.out.println(e.getX()+ " " + e.getY());
+                    }
+                }
+        );
 //        cancha.addMouseListener(
 //            new MouseAdapter() {
 //                @Override
@@ -108,4 +122,6 @@ public class HiloBalon implements Runnable{
 
         cancha.crearBalon(pelota);
     }
+
+
  }
