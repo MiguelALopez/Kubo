@@ -19,7 +19,7 @@ public class Cancha extends JPanel{
     public Cancha(int numBalons)
     {
         pelotas = new Balon[numBalons];
-        numBalons = 1;
+        // numBalons = 1;
     }
     /*Método encargado de almacenar las pelotas que se ingresan en un arreglo de pelotas para se
     * pintado en pantalla*/
@@ -63,4 +63,10 @@ public class Cancha extends JPanel{
 
         g.drawImage(imageBuffer, 0, 0, null);
     }
+
+    public Balon[] getPelotas() {
+        return pelotas;
+    }
+    
+    
 }

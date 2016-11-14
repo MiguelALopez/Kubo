@@ -11,31 +11,39 @@ import java.awt.event.MouseEvent;
 public class HiloBalon implements Runnable{
     Thread hilo;
 
-    private Cancha espacioBalons;
-    private PanelCancha fisicaBalon;
+    private Cancha cancha;
+    private PanelCancha panelCancha;
     private InterfazJuegoBalones appletBalon; // Main class
-    private Puntaje contadorBalons;
-    public HiloBalon(final Cancha espacioBalons, PanelCancha fisicaBalon, InterfazJuegoBalones appletBalon, final Puntaje contadorBalons) {
-        this.espacioBalons = espacioBalons;
-        this.fisicaBalon = fisicaBalon;
+    private Puntaje contadorRebotes;
+    public HiloBalon(final Cancha cancha, PanelCancha panelCancha, InterfazJuegoBalones appletBalon, final Puntaje contadorRebotes) {
+        this.cancha = cancha;
+        this.panelCancha = panelCancha;
         this.appletBalon = appletBalon;
-        this.contadorBalons = contadorBalons;
+        this.contadorRebotes = contadorRebotes;
 
         crearBalon();
         hilo = new Thread(this);
-        espacioBalons.addMouseListener(
-            new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent event) {
-                    if (!hilo.isAlive()){
-                        hilo.start();
-                    }else {
-                        crearBalon();
-                        contadorBalons.refrescarBalons(espacioBalons.numBalons);
-                    }
-                }
-            }
-        );
+        if (!hilo.isAlive())
+        {
+            hilo.start();
+        }
+        for (int i = 0; i < (contadorRebotes.getNumBalons()-1); i++) 
+        {
+            crearBalon();
+        }
+//        cancha.addMouseListener(
+//            new MouseAdapter() {
+//                @Override
+//                public void mouseClicked(MouseEvent event) {
+//                    if (!hilo.isAlive()){
+//                        hilo.start();
+//                    }else {
+//                        crearBalon();
+//                        contadorRebotes.refrescarBalons(cancha.numBalons);
+//                    }
+//                }
+//            }
+//        );
     }
 
 
@@ -50,41 +58,53 @@ public class HiloBalon implements Runnable{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for (int i = 0; i < espacioBalons.pelotas.length; i++)
+            for (int i = 0; i < cancha.pelotas.length; i++)
             {
-                if (espacioBalons.pelotas[i] != null)
+                if (cancha.pelotas[i] != null)
                 {
                     Dimension dimensionFrame = new Dimension();
                     dimensionFrame.setSize(appletBalon.getWidth(), appletBalon.getHeight() - 21);
-                    espacioBalons.pelotas[i].setPosicionAct(
-                            fisicaBalon.movimiento(espacioBalons.pelotas[i],dimensionFrame, espacioBalons.pelotas));
+                    cancha.pelotas[i].setPosicionAct(
+                            panelCancha.movimiento(cancha.pelotas[i],dimensionFrame, cancha.pelotas));
                 }
             }
-            espacioBalons.repaint();
+            cancha.repaint();
         }
      }
     /*Método encargado de crear pelotas y llamar al método crear pelotas para almacenarlas*/
     public void crearBalon()
     {
-        // Crear balones en posiciones aleatorias
+        // Crear balones en posiciones aleatorias sin salirse de la pantalla
         double t_posx = Math.random() * (appletBalon.getWidth() - 30);
         double t_posy = Math.random() * (appletBalon.getHeight() - 30);
         int posx = (int) t_posx;
         int posy = (int) t_posy;
-        if (posx < 0)
-            posx= 0 ;
-        if (posy < 0)
-            posy = 0;
+        if (posx < 30)
+            posx= 30 ;
+        if (posy < 30)
+            posy = 30;
         double t_radio = 0;
-        while (t_radio < 30)
+        while (t_radio < 30 )
+        {
             t_radio = Math.random() * 70;
+        }
+        /*
+        if ( posx - t_radio < 0 )
+            t_radio=posx-5;
+        if ( posy - t_radio < 0 )
+            t_radio=posy-5;
+        if (posx+t_radio>appletBalon.getWidth()-30)
+            t_radio= appletBalon.getWidth()-posx-5;
+        if (posy+t_radio>appletBalon.getHeight()-30)
+            t_radio = appletBalon.getHeight()-posy-5;
+        */ 
         int radio = (int) t_radio;
         Dimension posicionInicial = new Dimension(posx, posy);
         Balon pelota = new Balon(posicionInicial,
-                radio, fisicaBalon.colorAleatorio(),
-                fisicaBalon.desplazamientoAleatorio(),
-                fisicaBalon.desplazamientoAleatorio());
+                radio, panelCancha.colorAleatorio(),
+                panelCancha.desplazamientoAleatorio(),
+                panelCancha.desplazamientoAleatorio());
 
-        espacioBalons.crearBalon(pelota);
+        cancha.crearBalon(pelota);
     }
  }

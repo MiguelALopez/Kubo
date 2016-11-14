@@ -5,8 +5,9 @@ public class Balon {
     private Dimension posicionAct;
     private int radio;
     private Color color;
-    private int desplazamientoX;
-    private int desplazamientoY;
+    private int desplazamientoX=0;
+    private int desplazamientoY=0;
+    private int rebotes=0;
 
     public Balon(Dimension posicionAct, int radio, Color color, int desplazamientoX, int desplazamientoY) {
         this.posicionAct = posicionAct;
@@ -60,4 +61,13 @@ public class Balon {
     public void setDesplazamientoY(int desplazamientoY) {
         this.desplazamientoY = desplazamientoY;
     }
+
+    public int getRebotes() {
+        return rebotes;
+    }
+
+    public void setRebotes(int rebotes) {
+        this.rebotes = rebotes;
+    }
+    
 }

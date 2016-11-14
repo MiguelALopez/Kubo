@@ -9,15 +9,12 @@ import java.util.*;
 public class PanelCancha {
     Color colores[] = {Color.black, Color.blue, Color.yellow, Color.red, Color.green, Color.orange, Color.cyan,
     Color.gray, Color.magenta, Color.pink};
-    public int rebotes;
+    // public int rebotes;
 
     public PanelCancha() {
     }
 
-    /*Método encargado de parar la reproducción de audioRebote (si se esta Reproduciendo)
-        * y después de esto reproducirla*/
-    public void extremo(){
-    }
+    
 
     public Dimension movimiento(Balon pelota, Dimension dimFrame, Balon[] pelotas)
     {
@@ -25,13 +22,13 @@ public class PanelCancha {
         if ((pelota.getPosicionAct().getWidth() > (dimFrame.getWidth() - pelota.getRadio())) ||
                 (pelota.getPosicionAct().getWidth() <= 0)){
             pelota.setDesplazamientoX(-1 * pelota.getDesplazamientoX());
-            extremo();
-            this.rebotes++;
+            pelota.setRebotes(pelota.getRebotes()+1);
+            //this.rebotes++;
         }
         if ((pelota.getPosicionAct().getHeight() > (dimFrame.getHeight() - pelota.getRadio() - 40)) ||
                 (pelota.getPosicionAct().getHeight() <= 0)){
             pelota.setDesplazamientoY(-1 * pelota.getDesplazamientoY());
-            extremo();
+            pelota.setRebotes(pelota.getRebotes()+1);
             // this.rebotes++;
         }
         if (chocanBalons(pelota, pelotas))
