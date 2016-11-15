@@ -8,6 +8,7 @@ public class Balon {
     private int desplazamientoX=0;
     private int desplazamientoY=0;
     private int rebotes=0;
+    private boolean running=true;
 
     public Balon(Dimension posicionAct, int radio, Color color, int desplazamientoX, int desplazamientoY) {
         this.posicionAct = posicionAct;
@@ -30,6 +31,7 @@ public class Balon {
             desplazamientoX = 0;
             desplazamientoY = 0;
             System.out.println("tiki");
+            this.running=false;
         }
     }
 
@@ -79,6 +81,10 @@ public class Balon {
 
     public void setRebotes(int rebotes) {
         this.rebotes = rebotes;
+    }
+
+    public boolean isRunning() {
+        return running;
     }
     
 }

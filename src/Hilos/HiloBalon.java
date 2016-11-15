@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 
 // MovimientoBalon.java
 
@@ -38,9 +39,16 @@ public class HiloBalon implements Runnable{
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         super.mouseClicked(e);
+                        int total = cancha.pelotas.length;
+                        int rebotes = 0;
                         for (int i = 0; i < cancha.pelotas.length; i++) {
                             cancha.pelotas[i].checkAcierto(e.getX(), e.getY());
+                            if(!cancha.pelotas[i].isRunning())
+                                total -= 1;
+                            rebotes += cancha.pelotas[i].getRebotes();
                         }
+                        if ( total == 0 )
+                            JOptionPane.showMessageDialog(null, "Ganaste con " + (rebotes - 1) + " rebotes");
 //                        System.out.println(e.getX()+ " " + e.getY());
                     }
                 }
