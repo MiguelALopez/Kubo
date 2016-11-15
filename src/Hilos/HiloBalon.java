@@ -18,11 +18,13 @@ public class HiloBalon implements Runnable{
     private PanelCancha panelCancha;
     private InterfazJuegoBalones appletBalon; // Main class
     private Puntaje contadorRebotes;
-    public HiloBalon(final Cancha cancha, PanelCancha panelCancha, InterfazJuegoBalones appletBalon, final Puntaje contadorRebotes) {
+    private MenuVer menuVer;
+    public HiloBalon(final Cancha cancha, PanelCancha panelCancha, InterfazJuegoBalones appletBalon, final Puntaje contadorRebotes, final MenuVer menuVer) {
         this.cancha = cancha;
         this.panelCancha = panelCancha;
         this.appletBalon = appletBalon;
         this.contadorRebotes = contadorRebotes;
+        this.menuVer = menuVer;
 
         crearBalon();
         hilo = new Thread(this);
@@ -48,7 +50,16 @@ public class HiloBalon implements Runnable{
                             rebotes += cancha.pelotas[i].getRebotes();
                         }
                         if ( total == 0 )
+                        {
                             JOptionPane.showMessageDialog(null, "Ganaste con " + (rebotes - 1) + " rebotes");
+                            if ( (rebotes-1) < menuVer.getFullScore() )
+                            {
+                                String player = JOptionPane.showInputDialog(null, "Digita tu nombre:");
+                                menuVer.addPlayer(player, rebotes - 1);
+                            }
+                            
+                        }
+                            
 //                        System.out.println(e.getX()+ " " + e.getY());
                     }
                 }
@@ -98,8 +109,8 @@ public class HiloBalon implements Runnable{
     public void crearBalon()
     {
         // Crear balones en posiciones aleatorias sin salirse de la pantalla
-        double t_posx = Math.random() * (appletBalon.getWidth() - 100);
-        double t_posy = Math.random() * (appletBalon.getHeight() - 100);
+        double t_posx = Math.random() * (appletBalon.getWidth() - 150);
+        double t_posy = Math.random() * (appletBalon.getHeight() - 150);
         int posx = (int) t_posx;
         int posy = (int) t_posy;
         if (posx < 30)

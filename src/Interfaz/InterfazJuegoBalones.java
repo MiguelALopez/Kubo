@@ -17,7 +17,8 @@ public class InterfazJuegoBalones extends JFrame {
         try {
             setSize(800, 600);
             // Tiki el timbiliki
-            setJMenuBar(new MenuArchivo());
+            MenuVer menuVer = new MenuVer();
+            setJMenuBar(new MenuArchivo(menuVer));
 
 
             cantidadBalones = Integer.parseInt(JOptionPane.showInputDialog(null, "Cantidad de balones?"));
@@ -27,14 +28,22 @@ public class InterfazJuegoBalones extends JFrame {
             cancha = new Cancha(cantidadBalones);
             Puntaje contadorRebotes = new Puntaje(cantidadBalones, cancha.getPelotas());
             panelCancha.setPuntaje(contadorRebotes);
-            MenuArchivo miMenu = new MenuArchivo();
-            setJMenuBar(miMenu);
-            new HiloBalon(cancha, panelCancha, this, contadorRebotes);
+            
+            // MenuArchivo miMenu = new MenuArchivo(menuVer);
+//            setJMenuBar(miMenu);
+            
+            new HiloBalon(cancha, panelCancha, this, contadorRebotes, menuVer);
+            
             add(cancha, BorderLayout.CENTER);
             add(contadorRebotes, BorderLayout.SOUTH);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         } catch (Exception e) {
             System.out.println("Exception launched");
+            System.exit(0);
+        }
+        finally
+        {
+            
         }
     }
 
