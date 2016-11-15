@@ -12,5 +12,6 @@ public class MenuArchivo extends JMenuBar{
         JMenuItem itemFirstMenu = new JMenuItem();
         itemFirstMenu.setText("Score");
         fileMenu.add(itemFirstMenu);
+        add(fileMenu);
     }
 }
